@@ -10334,7 +10334,7 @@
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src/app.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(15)
+	__vue_template__ = __webpack_require__(18)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -10370,7 +10370,11 @@
 	
 	var _Increment2 = _interopRequireDefault(_Increment);
 	
-	var _store = __webpack_require__(13);
+	var _Decrease = __webpack_require__(13);
+	
+	var _Decrease2 = _interopRequireDefault(_Decrease);
+	
+	var _store = __webpack_require__(16);
 	
 	var _store2 = _interopRequireDefault(_store);
 	
@@ -10380,7 +10384,8 @@
 	  el: 'app',
 	  components: {
 	    Display: _Display2.default,
-	    Increment: _Increment2.default
+	    Increment: _Increment2.default,
+	    Decrease: _Decrease2.default
 	  },
 	  store: _store2.default
 	};
@@ -10442,10 +10447,9 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.getCount = getCount;
-	function getCount(state) {
+	var getCount = exports.getCount = function getCount(state) {
 	  return state.count;
-	}
+	};
 
 /***/ },
 /* 8 */
@@ -10513,11 +10517,24 @@
 	// action 会收到 store 作为它的第一个参数
 	// 既然我们只对事件的分发（dispatch 对象）感兴趣。（state 也可以作为可选项放入）
 	// 我们可以利用 ES6 的解构（destructuring）功能来简化对参数的导入
-	var incrementCounter = exports.incrementCounter = function incrementCounter(_ref) {
+	var incrementCounter = exports.incrementCounter = function incrementCounter( /*store*/_ref) {
 	  var dispatch = _ref.dispatch;
 	  var state = _ref.state;
 	
 	  dispatch('INCREMENT', 1);
+	  /*store.dispatch({
+	    type: 'INCREMENT',
+	    payload: 10
+	  });*/
+	};
+	
+	var desrease = exports.desrease = function desrease(_ref2) {
+	  var dispatch = _ref2.dispatch;
+	  var state = _ref2.state;
+	
+	  if (state.count > 0) {
+	    dispatch('INCREMENT', -1);
+	  }
 	};
 
 /***/ },
@@ -10530,6 +10547,60 @@
 /* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var __vue_script__, __vue_template__
+	__vue_script__ = __webpack_require__(14)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] components/Decrease.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(15)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./Decrease.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _actions = __webpack_require__(11);
+	
+	exports.default = {
+	  vuex: {
+	    actions: {
+	      desrease: _actions.desrease
+	    }
+	  }
+	};
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<button v-on:click=\"desrease\">Decrease -1</button>\n";
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
@@ -10540,7 +10611,7 @@
 	
 	var _vue2 = _interopRequireDefault(_vue);
 	
-	var _vuex = __webpack_require__(14);
+	var _vuex = __webpack_require__(17);
 	
 	var _vuex2 = _interopRequireDefault(_vuex);
 	
@@ -10560,7 +10631,7 @@
 	  // mutation 的第一个参数是当前的 state
 	  // 你可以在函数里修改 state
 	  INCREMENT: function INCREMENT(state, amount) {
-	    state.count = state.count + amount;
+	    state.count += amount; /*amount.payload*/
 	  }
 	};
 	
@@ -10572,7 +10643,7 @@
 	});
 
 /***/ },
-/* 14 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -11239,10 +11310,10 @@
 	}));
 
 /***/ },
-/* 15 */
+/* 18 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<Display></Display>\n<Increment></Increment>\n";
+	module.exports = "\n<Display></Display>\n<Increment></Increment>\n<Decrease></Decrease>\n";
 
 /***/ }
 /******/ ]);

@@ -1,3 +1,1 @@
-export function getCount (state) {
-  return state.count;
-}
+export const getCount = (state) => state.count;
