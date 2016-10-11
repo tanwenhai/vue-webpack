@@ -1,1 +1,3 @@
-export const getCount = (state) => state.count;
+export const getCount = function() {
+  return this.$store.state.count;
+};

@@ -6,11 +6,17 @@
 
 <script>
 import { incrementCounter } from '../vuex/actions';
+
 export default {
+  methods: {
+    increment: incrementCounter
+  }
+}
+/*export default {
   vuex: {
     actions: {
       increment: incrementCounter
     }
   }
-}
+}*/
 </script>

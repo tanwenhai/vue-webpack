@@ -10,7 +10,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('run', ['clean'], function() {
-  gulp.src('src/*.js')
+  gulp.src('src/app.js')
     .pipe(named())
     .pipe(webpack(webpack_config))
     .pipe(gulp.dest('./dist/'));
