@@ -8,6 +8,7 @@ Vue.use(VueRouter);
 // 可以从其他文件 import 进来
 import Foo from './views/foo.vue';
 import Bar from './views/bar.vue';
+import User from './views/user.vue';
 
 // 2. 定义路由
 // 每个路由应该映射一个组件。 其中"component" 可以是
@@ -16,7 +17,8 @@ import Bar from './views/bar.vue';
 // 我们晚点在讨论嵌套路由。
 const routes = [
   { path: '/foo', component: Foo },
-  { path: '/bar', component: Bar }
+  { path: '/bar', component: Bar },
+  { path: '/user/:id', component: User, name: 'user' },
 ];
 
 // 3. 创建 router 实例，然后传 `routes` 配置
