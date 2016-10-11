@@ -3,13 +3,11 @@
 </template>
 
 <script>
-  import {desrease} from '../vuex/actions';
+import { mapActions } from 'vuex';
 
-  export default {
-    methods: {
-      desrease
-    }
-  };
+export default {
+  methods: mapActions(['desrease'])
+}
   /*export default {
     vuex: {
       actions: {

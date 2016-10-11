@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import { incrementCounter } from '../vuex/actions';
+import { mapActions } from 'vuex';
 
 export default {
-  methods: {
-    increment: incrementCounter
-  }
+  methods: mapActions({
+    increment: 'incrementCounter'
+  })
 }
 /*export default {
   vuex: {

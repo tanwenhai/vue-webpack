@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import * as actions from './actions.js';
 
 // 告诉 vue “使用” vuex
 Vue.use(Vuex);
@@ -23,5 +24,6 @@ const mutations = {
 // 至此，这个 store 就可以连接到我们的应用中
 export default new Vuex.Store({
   state,
-  mutations
+  mutations,
+  actions
 });
