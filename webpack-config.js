@@ -2,7 +2,7 @@ module.exports = {
   output: {
     filename: '[name].js'
   },
-  devtool: 'source-map',
+  devtool: process.env.NODE_ENV != 'production' ? 'source-map' : '',
   module: {
     loaders: [
       {
