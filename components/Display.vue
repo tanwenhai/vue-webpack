@@ -6,11 +6,12 @@
 
 <script>
 import { getCount } from '../vuex/getters';
+import { mapState } from 'vuex';
 
 export default {
-  computed: {
+  computed: mapState({
     counterValue: getCount
-  }
+  })
 }
 /*
 export default {
