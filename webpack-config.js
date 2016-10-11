@@ -1,9 +1,5 @@
 module.exports = {
-  entry: {
-    index: './src/*.js'
-  },
   output: {
-    path: './dist/',
     filename: '[name].js'
   },
   devtool: 'source-map',
