@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "gulp run"
+    "build": "gulp run",
+    "start": "node apps/restful/app.js"
   },
   "author": "",
   "license": "ISC",
@@ -27,6 +28,7 @@
     "webpack": "^1.13.2"
   },
   "dependencies": {
+    "express": "^4.14.0",
     "vue": "^2.0.1",
     "vue-router": "^2.0.0",
     "vuex": "^2.0.0"

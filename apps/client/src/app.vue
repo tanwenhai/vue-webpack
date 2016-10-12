@@ -24,9 +24,9 @@
 </template>
 <script>
   import Vue from 'vue';
-  import Display from '../components/Display.vue';
-  import Increment from '../components/Increment.vue';
-  import Decrease from '../components/Decrease.vue';
+  import Display from '../apps/components/Display.vue';
+  import Increment from '../apps/components/Increment.vue';
+  import Decrease from '../apps/components/Decrease.vue';
   import store from '../vuex/store';
   import router from './router';
 
